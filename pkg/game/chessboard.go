@@ -24,6 +24,12 @@ func (b *Board) New(areWeWithWhite bool) {
 	b.FillEmptyMatrix()
 }
 
+func (b *Tuple) New(x, y int) {
+	b.item1 = x
+	b.item2 = y
+	
+}
+
 func (b *Board) GetPieceValue(c string) int {
 	var result int
 	switch c {

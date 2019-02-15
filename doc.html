@@ -1,0 +1,1165 @@
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+<link rel="stylesheet" href="bootstrap.min.css" /> 
+<link rel="stylesheet" href="style.css" /> 
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = ;
+	document.CALLGRAPH = ;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com\ivamilusheva\ChessGoGame\pkg\game"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#IsLower">func IsLower(c string) bool</a></dd>
+			
+				
+				<dd><a href="#IsUpper">func IsUpper(c string) bool</a></dd>
+			
+			
+				
+				<dd><a href="#Board">type Board</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.AreDifferentColor">func (b *Board) AreDifferentColor(firstX, firstY, secondX, secondY int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.Clone">func (b *Board) Clone() Board</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.DoesOpponentDiagonalBeatField">func (b *Board) DoesOpponentDiagonalBeatField(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.DoesOpponentHorseBeatField">func (b *Board) DoesOpponentHorseBeatField(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.DoesOpponentKingBeatField">func (b *Board) DoesOpponentKingBeatField(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.DoesOpponentLineBeatField">func (b *Board) DoesOpponentLineBeatField(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.DoesOpponentPawnBeatField">func (b *Board) DoesOpponentPawnBeatField(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.FillEmptyMatrix">func (b *Board) FillEmptyMatrix()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetAllHorseFields">func (b *Board) GetAllHorseFields(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetAllKingFields">func (b *Board) GetAllKingFields(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetAllPossibleMoves">func (b *Board) GetAllPossibleMoves() *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetBishopPossibleMoves">func (b *Board) GetBishopPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetBlackIndexes">func (b *Board) GetBlackIndexes() *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetBlackPawnPossibleMoves">func (b *Board) GetBlackPawnPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetChildBoards">func (b *Board) GetChildBoards() *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetCurrentPossibleMoves">func (b *Board) GetCurrentPossibleMoves(x int, y int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetDiagonalDownLeftPossibleMoves">func (b *Board) GetDiagonalDownLeftPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetDiagonalDownRightPossibleMoves">func (b *Board) GetDiagonalDownRightPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetDiagonalUpLeftPossibleMoves">func (b *Board) GetDiagonalUpLeftPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetDiagonalUpRightPossibleMoves">func (b *Board) GetDiagonalUpRightPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetDownPossibleMoves">func (b *Board) GetDownPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetFillValue">func (b *Board) GetFillValue(c string, isWhite bool) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetHorsePossibleMoves">func (b *Board) GetHorsePossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetKingPossibleMoves">func (b *Board) GetKingPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetLeftPossibleMoves">func (b *Board) GetLeftPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetPawnPossibleMoves">func (b *Board) GetPawnPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetPieceValue">func (b *Board) GetPieceValue(c string) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetPrintValue">func (b *Board) GetPrintValue(c string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetQueenPossibleMoves">func (b *Board) GetQueenPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetRightPossibleMoves">func (b *Board) GetRightPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetRockPossibleMoves">func (b *Board) GetRockPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetUpPossibleMoves">func (b *Board) GetUpPossibleMoves(row, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetValue">func (b *Board) GetValue() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetWhiteIndexes">func (b *Board) GetWhiteIndexes() *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.GetWhitePawnPossibleMoves">func (b *Board) GetWhitePawnPossibleMoves(row int, column int) *list.List</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.IsFinished">func (b *Board) IsFinished() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.IsInBoard">func (b *Board) IsInBoard(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.IsOpponentBeatField">func (b *Board) IsOpponentBeatField(row, column int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.New">func (b *Board) New(areWeWithWhite bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.PerformMove">func (b *Board) PerformMove(move Move)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Board.PrintMatrix">func (b *Board) PrintMatrix()</a></dd>
+				
+			
+				
+				<dd><a href="#Game">type Game</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.FindMax">func (g *Game) FindMax(node Node, counter int) TupleBoard</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.FindMin">func (g *Game) FindMin(node Node, counter int) TupleBoard</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.GetAtIndex">func (g *Game) GetAtIndex(list *list.List, index int) TupleBoardValue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.Max">func (g *Game) Max(list *list.List) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.Min">func (g *Game) Min(list *list.List) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.New">func (g *Game) New(currentNode Node, maxCount int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.PlayGameWithAI">func (g *Game) PlayGameWithAI()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Game.PlayerPlay">func (g *Game) PlayerPlay()</a></dd>
+				
+			
+				
+				<dd><a href="#Move">type Move</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Move.New">func (m *Move) New(startX int, startY int, endX int, endY int)</a></dd>
+				
+			
+				
+				<dd><a href="#Node">type Node</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Node.New">func (n *Node) New(board Board, currentValue int)</a></dd>
+				
+			
+				
+				<dd><a href="#Tuple">type Tuple</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Tuple.New">func (b *Tuple) New(x, y int)</a></dd>
+				
+			
+				
+				<dd><a href="#TupleBoard">type TupleBoard</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TupleBoardValue">type TupleBoardValue</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com\ivamilusheva\ChessGoGame\pkg\game/chessboard.go">chessboard.go</a>
+			
+				<a href="/src/github.com\ivamilusheva\ChessGoGame\pkg\game/move.go">move.go</a>
+			
+				<a href="/src/github.com\ivamilusheva\ChessGoGame\pkg\game/node.go">node.go</a>
+			
+				<a href="/src/github.com\ivamilusheva\ChessGoGame\pkg\game/play.go">play.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="N">N</span>     = 8
+    <span id="Empty">Empty</span> = &#34;☐&#34;
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="IsLower">func <a href="/src/target/chessboard.go?s=3859:3886#L212">IsLower</a>
+				<a class="permalink" href="#IsLower">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsLower(c <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="IsUpper">func <a href="/src/target/chessboard.go?s=3471:3498#L191">IsUpper</a>
+				<a class="permalink" href="#IsUpper">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsUpper(c <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Board">type <a href="/src/target/chessboard.go?s=70:162#L1">Board</a>
+				<a class="permalink" href="#Board">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Board struct {
+<span id="Board.Matrix"></span>    Matrix [8][8]<a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Board.AreDifferentColor">func (*Board) <a href="/src/target/chessboard.go?s=4247:4323#L233">AreDifferentColor</a>
+					<a class="permalink" href="#Board.AreDifferentColor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) AreDifferentColor(firstX, firstY, secondX, secondY <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.Clone">func (*Board) <a href="/src/target/chessboard.go?s=3190:3219#L174">Clone</a>
+					<a class="permalink" href="#Board.Clone">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) Clone() <a href="#Board">Board</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.DoesOpponentDiagonalBeatField">func (*Board) <a href="/src/target/chessboard.go?s=7939:8006#L384">DoesOpponentDiagonalBeatField</a>
+					<a class="permalink" href="#Board.DoesOpponentDiagonalBeatField">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) DoesOpponentDiagonalBeatField(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.DoesOpponentHorseBeatField">func (*Board) <a href="/src/target/chessboard.go?s=10418:10482#L499">DoesOpponentHorseBeatField</a>
+					<a class="permalink" href="#Board.DoesOpponentHorseBeatField">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) DoesOpponentHorseBeatField(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.DoesOpponentKingBeatField">func (*Board) <a href="/src/target/chessboard.go?s=11850:11913#L556">DoesOpponentKingBeatField</a>
+					<a class="permalink" href="#Board.DoesOpponentKingBeatField">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) DoesOpponentKingBeatField(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.DoesOpponentLineBeatField">func (*Board) <a href="/src/target/chessboard.go?s=6025:6088#L301">DoesOpponentLineBeatField</a>
+					<a class="permalink" href="#Board.DoesOpponentLineBeatField">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) DoesOpponentLineBeatField(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.DoesOpponentPawnBeatField">func (*Board) <a href="/src/target/chessboard.go?s=11068:11131#L523">DoesOpponentPawnBeatField</a>
+					<a class="permalink" href="#Board.DoesOpponentPawnBeatField">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) DoesOpponentPawnBeatField(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.FillEmptyMatrix">func (*Board) <a href="/src/target/chessboard.go?s=1880:1913#L137">FillEmptyMatrix</a>
+					<a class="permalink" href="#Board.FillEmptyMatrix">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) FillEmptyMatrix()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetAllHorseFields">func (*Board) <a href="/src/target/chessboard.go?s=4724:4785#L259">GetAllHorseFields</a>
+					<a class="permalink" href="#Board.GetAllHorseFields">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetAllHorseFields(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetAllKingFields">func (*Board) <a href="/src/target/chessboard.go?s=5382:5442#L279">GetAllKingFields</a>
+					<a class="permalink" href="#Board.GetAllKingFields">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetAllKingFields(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetAllPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=25069:25117#L1049">GetAllPossibleMoves</a>
+					<a class="permalink" href="#Board.GetAllPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetAllPossibleMoves() *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetBishopPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=17555:17625#L787">GetBishopPossibleMoves</a>
+					<a class="permalink" href="#Board.GetBishopPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetBishopPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetBlackIndexes">func (*Board) <a href="/src/target/chessboard.go?s=3924:3968#L216">GetBlackIndexes</a>
+					<a class="permalink" href="#Board.GetBlackIndexes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetBlackIndexes() *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetBlackPawnPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=21729:21802#L924">GetBlackPawnPossibleMoves</a>
+					<a class="permalink" href="#Board.GetBlackPawnPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetBlackPawnPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetChildBoards">func (*Board) <a href="/src/target/chessboard.go?s=25622:25665#L1070">GetChildBoards</a>
+					<a class="permalink" href="#Board.GetChildBoards">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetChildBoards() *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetCurrentPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=24354:24418#L1014">GetCurrentPossibleMoves</a>
+					<a class="permalink" href="#Board.GetCurrentPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetCurrentPossibleMoves(x <a href="/pkg/builtin/#int">int</a>, y <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetDiagonalDownLeftPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=15083:15159#L682">GetDiagonalDownLeftPossibleMoves</a>
+					<a class="permalink" href="#Board.GetDiagonalDownLeftPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetDiagonalDownLeftPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetDiagonalDownRightPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=14494:14571#L655">GetDiagonalDownRightPossibleMoves</a>
+					<a class="permalink" href="#Board.GetDiagonalDownRightPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetDiagonalDownRightPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetDiagonalUpLeftPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=16260:16334#L736">GetDiagonalUpLeftPossibleMoves</a>
+					<a class="permalink" href="#Board.GetDiagonalUpLeftPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetDiagonalUpLeftPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetDiagonalUpRightPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=15672:15747#L709">GetDiagonalUpRightPossibleMoves</a>
+					<a class="permalink" href="#Board.GetDiagonalUpRightPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetDiagonalUpRightPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetDownPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=12863:12927#L591">GetDownPossibleMoves</a>
+					<a class="permalink" href="#Board.GetDownPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetDownPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetFillValue">func (*Board) <a href="/src/target/chessboard.go?s=1748:1807#L128">GetFillValue</a>
+					<a class="permalink" href="#Board.GetFillValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetFillValue(c <a href="/pkg/builtin/#string">string</a>, isWhite <a href="/pkg/builtin/#bool">bool</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetHorsePossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=19765:19834#L857">GetHorsePossibleMoves</a>
+					<a class="permalink" href="#Board.GetHorsePossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetHorsePossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetKingPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=23528:23596#L987">GetKingPossibleMoves</a>
+					<a class="permalink" href="#Board.GetKingPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetKingPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetLeftPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=13686:13750#L623">GetLeftPossibleMoves</a>
+					<a class="permalink" href="#Board.GetLeftPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetLeftPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetPawnPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=23092:23160#L969">GetPawnPossibleMoves</a>
+					<a class="permalink" href="#Board.GetPawnPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetPawnPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetPieceValue">func (*Board) <a href="/src/target/chessboard.go?s=390:433#L23">GetPieceValue</a>
+					<a class="permalink" href="#Board.GetPieceValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetPieceValue(c <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetPrintValue">func (*Board) <a href="/src/target/chessboard.go?s=1059:1105#L80">GetPrintValue</a>
+					<a class="permalink" href="#Board.GetPrintValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetPrintValue(c <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetQueenPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=18341:18410#L811">GetQueenPossibleMoves</a>
+					<a class="permalink" href="#Board.GetQueenPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetQueenPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetRightPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=14090:14155#L639">GetRightPossibleMoves</a>
+					<a class="permalink" href="#Board.GetRightPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetRightPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetRockPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=16848:16916#L763">GetRockPossibleMoves</a>
+					<a class="permalink" href="#Board.GetRockPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetRockPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetUpPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=13275:13337#L607">GetUpPossibleMoves</a>
+					<a class="permalink" href="#Board.GetUpPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetUpPossibleMoves(row, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetValue">func (*Board) <a href="/src/target/chessboard.go?s=1550:1580#L116">GetValue</a>
+					<a class="permalink" href="#Board.GetValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetValue() <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetWhiteIndexes">func (*Board) <a href="/src/target/chessboard.go?s=3536:3580#L195">GetWhiteIndexes</a>
+					<a class="permalink" href="#Board.GetWhiteIndexes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetWhiteIndexes() *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.GetWhitePawnPossibleMoves">func (*Board) <a href="/src/target/chessboard.go?s=20366:20439#L879">GetWhitePawnPossibleMoves</a>
+					<a class="permalink" href="#Board.GetWhitePawnPossibleMoves">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) GetWhitePawnPossibleMoves(row <a href="/pkg/builtin/#int">int</a>, column <a href="/pkg/builtin/#int">int</a>) *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.IsFinished">func (*Board) <a href="/src/target/chessboard.go?s=3058:3091#L168">IsFinished</a>
+					<a class="permalink" href="#Board.IsFinished">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) IsFinished() <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.IsInBoard">func (*Board) <a href="/src/target/chessboard.go?s=4562:4609#L247">IsInBoard</a>
+					<a class="permalink" href="#Board.IsInBoard">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) IsInBoard(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.IsOpponentBeatField">func (*Board) <a href="/src/target/chessboard.go?s=12541:12598#L582">IsOpponentBeatField</a>
+					<a class="permalink" href="#Board.IsOpponentBeatField">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) IsOpponentBeatField(row, column <a href="/pkg/builtin/#int">int</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.New">func (*Board) <a href="/src/target/chessboard.go?s=201:241#L11">New</a>
+					<a class="permalink" href="#Board.New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) New(areWeWithWhite <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.PerformMove">func (*Board) <a href="/src/target/chessboard.go?s=26077:26115#L1088">PerformMove</a>
+					<a class="permalink" href="#Board.PerformMove">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) PerformMove(move <a href="#Move">Move</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Board.PrintMatrix">func (*Board) <a href="/src/target/chessboard.go?s=26472:26501#L1107">PrintMatrix</a>
+					<a class="permalink" href="#Board.PrintMatrix">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Board">Board</a>) PrintMatrix()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Game">type <a href="/src/target/play.go?s=109:164#L4">Game</a>
+				<a class="permalink" href="#Game">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Game struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Game.FindMax">func (*Game) <a href="/src/target/play.go?s=5833:5890#L225">FindMax</a>
+					<a class="permalink" href="#Game.FindMax">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) FindMax(node <a href="#Node">Node</a>, counter <a href="/pkg/builtin/#int">int</a>) <a href="#TupleBoard">TupleBoard</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.FindMin">func (*Game) <a href="/src/target/play.go?s=4299:4356#L169">FindMin</a>
+					<a class="permalink" href="#Game.FindMin">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) FindMin(node <a href="#Node">Node</a>, counter <a href="/pkg/builtin/#int">int</a>) <a href="#TupleBoard">TupleBoard</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.GetAtIndex">func (*Game) <a href="/src/target/play.go?s=787:856#L43">GetAtIndex</a>
+					<a class="permalink" href="#Game.GetAtIndex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) GetAtIndex(list *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a>, index <a href="/pkg/builtin/#int">int</a>) <a href="#TupleBoardValue">TupleBoardValue</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.Max">func (*Game) <a href="/src/target/play.go?s=1095:1134#L57">Max</a>
+					<a class="permalink" href="#Game.Max">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) Max(list *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a>) <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.Min">func (*Game) <a href="/src/target/play.go?s=534:573#L31">Min</a>
+					<a class="permalink" href="#Game.Min">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) Min(list *<a href="/pkg/container/list/">list</a>.<a href="/pkg/container/list/#List">List</a>) <a href="/pkg/builtin/#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.New">func (*Game) <a href="/src/target/play.go?s=290:340#L20">New</a>
+					<a class="permalink" href="#Game.New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) New(currentNode <a href="#Node">Node</a>, maxCount <a href="/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.PlayGameWithAI">func (*Game) <a href="/src/target/play.go?s=1349:1380#L69">PlayGameWithAI</a>
+					<a class="permalink" href="#Game.PlayGameWithAI">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) PlayGameWithAI()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Game.PlayerPlay">func (*Game) <a href="/src/target/play.go?s=2274:2301#L101">PlayerPlay</a>
+					<a class="permalink" href="#Game.PlayerPlay">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="#Game">Game</a>) PlayerPlay()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Move">type <a href="/src/target/move.go?s=14:145#L1">Move</a>
+				<a class="permalink" href="#Move">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Move struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Move.New">func (*Move) <a href="/src/target/move.go?s=147:209#L1">New</a>
+					<a class="permalink" href="#Move.New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="#Move">Move</a>) New(startX <a href="/pkg/builtin/#int">int</a>, startY <a href="/pkg/builtin/#int">int</a>, endX <a href="/pkg/builtin/#int">int</a>, endY <a href="/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Node">type <a href="/src/target/node.go?s=14:72#L1">Node</a>
+				<a class="permalink" href="#Node">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Node struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Node.New">func (*Node) <a href="/src/target/node.go?s=74:123#L1">New</a>
+					<a class="permalink" href="#Node.New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (n *<a href="#Node">Node</a>) New(board <a href="#Board">Board</a>, currentValue <a href="/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Tuple">type <a href="/src/target/chessboard.go?s=3426:3469#L186">Tuple</a>
+				<a class="permalink" href="#Tuple">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Tuple struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Tuple.New">func (*Tuple) <a href="/src/target/chessboard.go?s=327:356#L17">New</a>
+					<a class="permalink" href="#Tuple.New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="#Tuple">Tuple</a>) New(x, y <a href="/pkg/builtin/#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TupleBoard">type <a href="/src/target/play.go?s=166:218#L9">TupleBoard</a>
+				<a class="permalink" href="#TupleBoard">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type TupleBoard struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TupleBoardValue">type <a href="/src/target/play.go?s=220:288#L14">TupleBoardValue</a>
+				<a class="permalink" href="#TupleBoardValue">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type TupleBoardValue struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+

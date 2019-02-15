@@ -6,7 +6,7 @@ import (
 
 func main() {
 	var board game.Board
-	areWeWithWhite := false
+	areWeWithWhite := true
 	board.New(areWeWithWhite)
 	board.PrintMatrix()
 	var currentNode game.Node
