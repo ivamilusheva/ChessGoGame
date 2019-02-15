@@ -963,7 +963,7 @@ func (b *Board) GetBlackPawnPossibleMoves(row int, column int) *list.List {
 
 	// Взимане на лява противникова фигура
 	toY = column - 1
-	if b.IsInBoard(toX, toY) && b.AreDifferentColor(row, column, toX, toY) {
+	if b.IsInBoard(toX, toY) && (b.Matrix[toX][toY] != Empty) && b.AreDifferentColor(row, column, toX, toY) {
 		var move Move
 		move.New(row, column, toX, toY)
 		move.pawnReachedFinal = isMovedToFinal
@@ -972,7 +972,7 @@ func (b *Board) GetBlackPawnPossibleMoves(row int, column int) *list.List {
 
 	// Взимане на дясна противникова фигура
 	toY = column + 1
-	if b.IsInBoard(toX, toY) && b.AreDifferentColor(row, column, toX, toY) {
+	if b.IsInBoard(toX, toY) && (b.Matrix[toX][toY] != Empty) && b.AreDifferentColor(row, column, toX, toY) {
 		var move Move
 		move.New(row, column, toX, toY)
 		move.pawnReachedFinal = isMovedToFinal
@@ -1089,7 +1089,9 @@ func (b *Board) GetChildBoards() *list.List {
 	if isGameFinished {
 		return result
 	}
+
 	possibleMoves := b.GetAllPossibleMoves()
+	
 	for possibleMove := possibleMoves.Front(); possibleMove != nil; possibleMove = possibleMove.Next() {
 		newBoard := b.Clone()
 		newBoard.PerformMove(possibleMove.Value.(Move))

@@ -2,11 +2,13 @@ package main
 
 import (
 
-	//	"fmt"
+//		"fmt"
 	"ChessGoPorj/game"
-	//	"math/rand"
+		// "math/rand"
+		// "time"
 	//	"bufio"
 	//	"os"
+
 	//	"strings"
 	//	"image/color"
 )
@@ -15,21 +17,19 @@ import (
 //import "notnil/chessimg"
 
 //import "notnil/svgo"
-const (
-	startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-)
 
 func main() {
-
 	var board game.Board
 	board.New(true)
-	//neshto := board.GetWhiteIndexes()
-	// for i := neshto.Front(); i != nil; i = i.Next() {
-
-	// fmt.Println(i.Value)
-	// }
 	board.PrintMatrix()
+	var currentNode game.Node
+	currentNode.New(board, 0)
 
+	// Max recustion count: 4
+	var game game.Game
+	game.New(currentNode, 4)
+	game.PlayerPlay()
+	game.PlayGame()
 }
 
 /*
