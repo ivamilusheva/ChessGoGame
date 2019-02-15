@@ -176,13 +176,7 @@ func (b *Board) IsFinished() bool {
 }
 
 func (b *Board) Clone() Board {
-	// b.areWeWithWhite=board.areWeWithWhite
-	// b.isWhiteOnMove= board.isWhiteOnMove
-	// b.Matrix= board.Matrix
-	// return b
-
 	var newMatrix [N][N]string
-
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
 			newMatrix[i][j] = b.Matrix[i][j]
@@ -199,16 +193,10 @@ type Tuple struct {
 }
 
 func IsUpper(c string) bool {
-	if strings.ToUpper(c) == c {
-		return true
-	} else {
-		return false
-	}
-
+	return strings.ToUpper(c) == c
 }
 
 func (b *Board) GetWhiteIndexes() *list.List {
-	//result := make ([]Tuple, 100)
 	result := list.New()
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
@@ -218,7 +206,6 @@ func (b *Board) GetWhiteIndexes() *list.List {
 				tuple.item1 = i
 				tuple.item2 = j
 				result.PushBack(tuple)
-				//result = append(result, tuple)
 			}
 		}
 	}
@@ -227,16 +214,10 @@ func (b *Board) GetWhiteIndexes() *list.List {
 }
 
 func IsLower(c string) bool {
-	if strings.ToLower(c) == c {
-		return true
-	} else {
-		return false
-	}
-
+	return strings.ToLower(c) == c
 }
 
 func (b *Board) GetBlackIndexes() *list.List {
-	//var result = new List<Tuple<int, int>>();
 	result := list.New()
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
@@ -295,7 +276,7 @@ func (b *Board) GetAllHorseFields(row, column int) *list.List {
 			result.PushBack(x.Value)
 		}
 	}
-	//result := allMoves.Where(x => IsInBoard(x.Item1, x.Item2)).ToList();
+
 	return result
 }
 
@@ -520,9 +501,7 @@ func (b *Board) DoesOpponentDiagonalBeatField(row, column int) bool {
 }
 
 func (b *Board) DoesOpponentHorseBeatField(row, column int) bool {
-
 	allMoves := b.GetAllHorseFields(row, column)
-	//result := list.New()
 	for possibleMove := allMoves.Front(); possibleMove != nil; possibleMove = possibleMove.Next() {
 		x := possibleMove.Value.(Tuple).item1
 		y := possibleMove.Value.(Tuple).item2
@@ -998,14 +977,14 @@ func (b *Board) GetPawnPossibleMoves(row int, column int) *list.List {
 			return b.GetWhitePawnPossibleMoves(row, column)
 		} else {
 			return b.GetBlackPawnPossibleMoves(row, column)
-		}	
+		}
 	} else {
 		if IsUpper(pieceValue) {
 			return b.GetBlackPawnPossibleMoves(row, column)
 		} else {
 			return b.GetWhitePawnPossibleMoves(row, column)
 		}
-	
+
 	}
 }
 
@@ -1074,9 +1053,9 @@ func (b *Board) GetCurrentPossibleMoves(x int, y int) *list.List {
 func (b *Board) GetAllPossibleMoves() *list.List {
 	indexes := list.New()
 	if b.isWhiteOnMove {
-			indexes = b.GetWhiteIndexes()
+		indexes = b.GetWhiteIndexes()
 	} else {
-			indexes = b.GetBlackIndexes()
+		indexes = b.GetBlackIndexes()
 	}
 
 	result := list.New()
@@ -1100,7 +1079,6 @@ func (b *Board) GetChildBoards() *list.List {
 	}
 
 	possibleMoves := b.GetAllPossibleMoves()
-	
 	for possibleMove := possibleMoves.Front(); possibleMove != nil; possibleMove = possibleMove.Next() {
 		newBoard := b.Clone()
 		newBoard.PerformMove(possibleMove.Value.(Move))
@@ -1133,10 +1111,8 @@ func (b *Board) PerformMove(move Move) {
 func (b *Board) PrintMatrix() {
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
-
 			fmt.Print(b.GetPrintValue(b.Matrix[i][j]), " ")
 		}
 		fmt.Println()
 	}
-
 }

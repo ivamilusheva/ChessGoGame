@@ -76,8 +76,8 @@ func (g *Game) Max(list *list.List) int {
 	return max_value
 }
 
-func (g *Game) PlayGame() {
-	var afterPlay TupleBoard //////////
+func (g *Game) PlayGameWithAI() {
+	var afterPlay TupleBoard
 
 	for !g.currentNode.board.IsFinished() {
 
@@ -112,7 +112,7 @@ func (g *Game) PlayerPlay() {
 	input := bufio.NewReader(os.Stdin)
 	for true {
 		fmt.Println("Please enter position for your fugure(row col) - separated with space")
-		
+
 		line, _ := input.ReadString('\n')
 		line = strings.TrimRight(line, "\r\n")
 		parts := strings.Split(line, " ")
@@ -148,7 +148,6 @@ func (g *Game) PlayerPlay() {
 		}
 
 		fmt.Println("Write coords (row col) separated with space")
-		//line = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
 		line, _ = input.ReadString('\n')
 		line = strings.TrimRight(line, "\r\n")
 		parts = strings.Split(line, " ")
