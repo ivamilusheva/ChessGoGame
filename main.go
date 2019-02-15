@@ -2,36 +2,35 @@ package main
 
 import (
 
-//	"fmt"
+	//	"fmt"
 	"ChessGoPorj/game"
-//	"math/rand"
-//	"bufio"
-//	"os"
-//	"strings"
-//	"image/color"
+	//	"math/rand"
+	//	"bufio"
+	//	"os"
+	//	"strings"
+	//	"image/color"
 )
+
 //import "notnil/chess"
 //import "notnil/chessimg"
 
 //import "notnil/svgo"
 const (
 	startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-
 )
 
 func main() {
 
-	var board game.Board;
+	var board game.Board
 	board.New(true)
 	//neshto := board.GetWhiteIndexes()
 	// for i := neshto.Front(); i != nil; i = i.Next() {
-		
+
 	// fmt.Println(i.Value)
 	// }
 	board.PrintMatrix()
-	
-}
 
+}
 
 /*
 
@@ -102,8 +101,6 @@ func main() {
         fmt.Println(game.Position().Board().Draw())
         fmt.Printf("Game completed. %s by %s.\n", game.Outcome(), game.Method())
 		fmt.Println(game.String())     */
-		
-
 
 /*	game := chess.NewGame()
 moves := game.ValidMoves()
@@ -120,7 +117,7 @@ game.Move(moves[7])
 moves = game.ValidMoves()
 fmt.Println(moves)     */
 //fmt.Println(moves[7])
-	//var board chess.Board;
+//var board chess.Board;
 //	fmt.Println(board.Draw());
 //	fmt.Println(game.Position().Board().Draw());
 /*
@@ -147,4 +144,3 @@ if err := chessimg.SVG(f, pos.Board(), mark); err != nil {
 
 //fmt.Println(game)
 */
-

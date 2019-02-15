@@ -1,6 +1,6 @@
 package game
 
 type Node struct {
-	board Board
+	board        Board
 	currentValue int
 }
