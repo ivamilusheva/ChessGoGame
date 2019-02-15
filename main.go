@@ -2,7 +2,7 @@ package main
 
 import (
 
-	"fmt"
+//	"fmt"
 	"ChessGoPorj/game"
 //	"math/rand"
 //	"bufio"
@@ -23,11 +23,12 @@ func main() {
 
 	var board game.Board;
 	board.New(true)
-	neshto := board.GetWhiteIndexes()
-	for i := neshto.Front(); i != nil; i = i.Next() {
+	//neshto := board.GetWhiteIndexes()
+	// for i := neshto.Front(); i != nil; i = i.Next() {
 		
-	fmt.Println(i.Value)
-	}
+	// fmt.Println(i.Value)
+	// }
+	board.PrintMatrix()
 	
 }
 

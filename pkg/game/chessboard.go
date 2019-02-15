@@ -3,6 +3,7 @@ package game
 import (
 	"strings"
 	"math"
+	"fmt"
 	"container/list"
 )
 
@@ -613,4 +614,523 @@ func (b *Board) IsOpponentBeatField(row, column int) bool {
 		b.DoesOpponentPawnBeatField(row, column) ||
 		b.DoesOpponentKingBeatField(row, column);
 	return result;
+}
+
+func (b *Board) GetDownPossibleMoves(row, column int) *list.List {
+	result := list.New()
+	for i := row + 1; i < N; i++ {
+		if b.Matrix[i][column] == Empty	{
+			result.PushBack(Move{row, column, i, column, false})
+		}	else {
+			if b.AreDifferentColor(row, column, i, column) {
+				// взимане на фигура
+				result.PushBack(Move{row, column, i, column, false})
+			}
+			break;
+		}
+	}
+	return result;
+}
+
+func (b *Board) GetUpPossibleMoves(row, column int) *list.List {
+	result := list.New()
+	for i := row - 1; i >= 0; i-- {
+		if b.Matrix[i][column] == Empty	{
+			result.PushBack(Move{row, column, i, column, false})
+		}	else	{
+			if b.AreDifferentColor(row, column, i, column)	{
+				// взимане на фигура
+				result.PushBack(Move{row, column, i, column, false})
+			}
+			break;
+		}
+	}
+	return result;
+}
+
+func (b *Board) GetLeftPossibleMoves(row, column int) *list.List {
+	result := list.New()
+	for j := column - 1; j >= 0; j-- {
+		if b.Matrix[row][j] == Empty {
+			result.PushBack(Move{row, column, row, j, false})
+		}	else	{
+			if b.AreDifferentColor(row, column, row, j)	{
+				// взимане на фигура
+				result.PushBack(Move{row, column, row, j, false})
+			}
+			break;
+		}
+	}
+	return result;
+}
+
+func (b *Board) GetRightPossibleMoves(row, column int) *list.List {
+	result := list.New()
+	for j := column + 1; j < N; j++	{
+		if b.Matrix[row][j] == Empty {
+			result.PushBack(Move{row, column, row, j, false})
+		}	else	{
+			if b.AreDifferentColor(row, column, row, j)	{
+				// взимане на фигура
+				result.PushBack(Move{row, column, row, j, false})
+			}
+			break;
+		}
+	}
+	return result;
+}
+
+func (b *Board) GetDiagonalDownRightPossibleMoves(row, column int) *list.List {
+	result := list.New()
+
+	toX := row + 1
+	toY := column + 1
+	for  toX < N && toY < N	{
+		if b.IsInBoard(toX, toY)	{
+			pieceValue := b.Matrix[toX][toY]
+			if pieceValue == Empty	{
+				result.PushBack(Move{row, column, toX, toY, false})
+			}	else	{
+				if b.AreDifferentColor(row, column, toX, toY) {
+					// Взимане на фигура
+					result.PushBack(Move{row, column, toX, toY, false})
+				}
+				break;
+			}
+		} else	{
+			// Извън дъската
+			break;
+		}
+		toX++
+		toY++
+	}
+	return result
+}
+
+func (b *Board) GetDiagonalDownLeftPossibleMoves(row, column int) *list.List {
+	result := list.New()
+
+	toX := row + 1
+	toY := column - 1
+	for toX < N && toY >= 0	{
+		if b.IsInBoard(toX, toY) {
+			pieceValue := b.Matrix[toX][toY]
+			if pieceValue == Empty	{
+				result.PushBack(Move{row, column, toX, toY, false})
+			} else	{
+				if b.AreDifferentColor(row, column, toX, toY) {
+					// Взимане на фигура
+					result.PushBack(Move{row, column, toX, toY, false})
+				}
+				break;
+			}
+		} else	{
+			// Извън дъската
+			break;
+		}
+		toX++;
+		toY--;
+	}
+	return result;
+}
+
+func (b *Board) GetDiagonalUpRightPossibleMoves(row, column int) *list.List {
+	result := list.New()
+
+	toX := row - 1
+	toY := column + 1
+	for toX >= 0 && toY < N	{
+		if b.IsInBoard(toX, toY)	{
+			pieceValue := b.Matrix[toX][toY]
+			if pieceValue == Empty	{
+				result.PushBack(Move{row, column, toX, toY, false})
+			}	else {
+				if b.AreDifferentColor(row, column, toX, toY) {
+					// Взимане на фигура
+					result.PushBack(Move{row, column, toX, toY, false})
+				}
+				break;
+			}
+		}	else {
+			// Извън дъската
+			break;
+		}
+		toX--;
+		toY++;
+	}
+	return result;
+}
+
+func (b *Board) GetDiagonalUpLeftPossibleMoves(row, column int) *list.List {
+	result := list.New()
+
+	toX := row - 1
+	toY := column - 1
+	for toX >= 0 && toY >= 0 {
+		if b.IsInBoard(toX, toY)	{
+			pieceValue := b.Matrix[toX][toY]
+			if pieceValue == Empty	{
+				result.PushBack(Move{row, column, toX, toY, false})
+			}	else	{
+				if b.AreDifferentColor(row, column, toX, toY) {
+					// Взимане на фигура
+					result.PushBack(Move{row, column, toX, toY, false})
+				}
+				break;
+			}
+		} else {
+			// Извън дъската
+			break;
+		}
+		toX--;
+		toY--;
+	}
+	return result;
+}
+
+
+func (b *Board) GetRockPossibleMoves(row int, column int) *list.List {
+	result := list.New()
+	
+	downMoves := b.GetDownPossibleMoves(row, column)
+        upMoves := b.GetUpPossibleMoves(row, column)
+        leftMoves := b.GetLeftPossibleMoves(row, column)
+        rightMoves := b.GetRightPossibleMoves(row, column)
+
+	for temp := downMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := upMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := leftMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := rightMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	
+	return result
+}
+
+func (b *Board) GetBishopPossibleMoves(row int, column int) *list.List {
+	result := list.New()
+	
+	downRightMoves := b.GetDiagonalDownRightPossibleMoves(row, column)
+        downLeftMoves := b.GetDiagonalDownLeftPossibleMoves(row, column)
+        upRightMoves := b.GetDiagonalUpRightPossibleMoves(row, column)
+        upLeftMoves := b.GetDiagonalUpLeftPossibleMoves(row, column)
+
+	for temp := downRightMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := downLeftMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := upRightMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := upLeftMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	
+	return result
+}
+
+func (b *Board) GetQueenPossibleMoves(row int, column int) *list.List {
+	result := list.New()
+	
+	// line
+        downMoves := b.GetDownPossibleMoves(row, column)
+        upMoves := b.GetUpPossibleMoves(row, column)
+        leftMoves := b.GetLeftPossibleMoves(row, column)
+        rightMoves := b.GetRightPossibleMoves(row, column)
+
+        // diagonal
+        downRightMoves := b.GetDiagonalDownRightPossibleMoves(row, column)
+        downLeftMoves := b.GetDiagonalDownLeftPossibleMoves(row, column)
+        upRightMoves := b.GetDiagonalUpRightPossibleMoves(row, column)
+        upLeftMoves := b.GetDiagonalUpLeftPossibleMoves(row, column)
+
+	// line
+	for temp := downMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := upMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := leftMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := rightMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	
+	// diagonal
+	for temp := downRightMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := downLeftMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := upRightMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	for temp := upLeftMoves.Front(); temp != nil; temp = temp.Next() {
+		result.PushBack(temp.Value)
+	}
+	
+	return result
+}
+
+func (b *Board) GetHorsePossibleMoves(row int, column int) *list.List {
+	allMoves := b.GetAllHorseFields(row, column)
+	result := list.New()
+	
+	for possibleMove := allMoves.Front(); possibleMove != nil; possibleMove = possibleMove.Next() {
+		x := possibleMove.Value.(Tuple).item1
+		y := possibleMove.Value.(Tuple).item2
+		pieceValue := b.Matrix[x][y]
+		if pieceValue == Empty {
+			var move Move
+			move.New(row, column, x, y)
+			result.PushBack(move)
+		} else if b.AreDifferentColor(row, column, x, y) {
+			var move Move
+			move.New(row, column, x, y)
+			result.PushBack(move)
+		}
+	}
+	
+	return result
+}
+
+func (b *Board) GetWhitePawnPossibleMoves(row int, column int) *list.List {
+	result := list.New()
+
+	// 1 позиция нагоре
+	// Не може да излезне от дъската понеже се замества с друга фигура
+	toX := row - 1
+	toY := column
+	isMovedToFinal := (toX == 0)
+	if b.Matrix[toX][toY] == Empty {
+		var move Move
+		move.New(row, column, toX, toY)
+		move.pawnReachedFinal = isMovedToFinal
+		result.PushBack(move)
+	}
+	
+	// Взимане на лява противникова фигура
+	toY = column - 1
+	if b.IsInBoard(toX, toY) && (b.Matrix[toX][toY] != Empty) && b.AreDifferentColor(row, column, toX, toY) {
+		var move Move
+		move.New(row, column, toX, toY)
+		move.pawnReachedFinal = isMovedToFinal
+		result.PushBack(move)
+	}
+
+	// Взимане на дясна противникова фигура
+	toY = column + 1
+	if b.IsInBoard(toX, toY) && (b.Matrix[toX][toY] != Empty) && b.AreDifferentColor(row, column, toX, toY) {
+		var move Move
+		move.New(row, column, toX, toY)
+		move.pawnReachedFinal = isMovedToFinal
+		result.PushBack(move)
+	}
+
+	// 2 позиции, ако не е играна досега
+	if row == N - 2	{
+		if b.Matrix[row - 1][column] == Empty && b.Matrix[row - 2][column] == Empty {
+			var move Move
+			move.New(row, column, row - 2, column)
+			result.PushBack(move)
+		}
+	}
+	
+	return result
+}
+
+func (b *Board) GetBlackPawnPossibleMoves(row int, column int) *list.List {
+	result := list.New()
+	
+	// 1 позиция надолу
+	// Не може да излезне от дъската понеже се замества с друга фигура
+	toX := row + 1
+	toY := column
+	isMovedToFinal := (toX == N - 1)
+	if b.Matrix[toX][toY] == Empty {
+		var move Move
+		move.New(row, column, toX, toY)
+		move.pawnReachedFinal = isMovedToFinal
+		result.PushBack(move)
+	}
+
+	// Взимане на лява противникова фигура
+	toY = column - 1
+	if b.IsInBoard(toX, toY) && b.AreDifferentColor(row, column, toX, toY) {
+		var move Move
+		move.New(row, column, toX, toY)
+		move.pawnReachedFinal = isMovedToFinal
+		result.PushBack(move)
+	}
+
+	// Взимане на дясна противникова фигура
+	toY = column + 1
+	if b.IsInBoard(toX, toY) && b.AreDifferentColor(row, column, toX, toY) {
+		var move Move
+		move.New(row, column, toX, toY)
+		move.pawnReachedFinal = isMovedToFinal
+		result.PushBack(move)
+	}
+
+	// 2 позиции, ако не е играна досега
+	if row == 1 {
+		if b.Matrix[row + 1][column] == Empty && b.Matrix[row + 2][column] == Empty {
+			var move Move
+			move.New(row, column, row + 2, column)
+			result.PushBack(move)
+		}
+	}
+
+	return result
+}
+
+func (b *Board) GetPawnPossibleMoves(row int, column int) *list.List {
+	pieceValue := b.Matrix[row][column]
+	if IsUpper(pieceValue) {
+		return b.GetWhitePawnPossibleMoves(row, column)
+	} else {
+		return b.GetBlackPawnPossibleMoves(row, column)
+	}
+}
+
+
+func (b *Board) GetKingPossibleMoves(row int, column int) *list.List {
+	allMoves := b.GetAllKingFields(row, column)
+	result := list.New()
+	
+	for possibleMove := allMoves.Front(); possibleMove != nil; possibleMove = possibleMove.Next() {
+		x := possibleMove.Value.(Tuple).item1
+		y := possibleMove.Value.(Tuple).item2
+		pieceValue := b.Matrix[x][y]
+
+		isBeatenField := b.IsOpponentBeatField(row, column)
+		if !isBeatenField {
+			if pieceValue == Empty {
+				var move Move
+				move.New(row, column, x, y)
+				result.PushBack(move)
+			} else if b.AreDifferentColor(row, column, x, y) {
+				// Взимане на фигура, няма break понеже ходовете на царя са точно определени
+				var move Move
+				move.New(row, column, x, y)
+				result.PushBack(move)
+			}
+		}
+	}
+	
+	return result
+}
+
+func (b *Board) GetCurrentPossibleMoves(x int, y int) *list.List {
+	pieceValue := b.Matrix[x][y]
+	if strings.ToLower(pieceValue) == "r" {
+		// топ:
+		return b.GetRockPossibleMoves(x, y)
+	}
+	
+	if strings.ToLower(pieceValue) == "n" {
+		// кон:
+		return b.GetHorsePossibleMoves(x, y)
+	}
+	
+	if strings.ToLower(pieceValue) == "b" {
+		// офицер:
+		return b.GetBishopPossibleMoves(x, y)
+	}
+	
+	if strings.ToLower(pieceValue) == "q" {
+		// царица:
+		return b.GetQueenPossibleMoves(x, y)
+	}
+	
+	if strings.ToLower(pieceValue) == "k" {
+		// цар:
+		return b.GetKingPossibleMoves(x, y)
+	}
+	
+	if strings.ToLower(pieceValue) == "p" {
+		// пешка:
+		return b.GetPawnPossibleMoves(x, y)
+	}
+	
+	return list.New()
+}
+
+func (b *Board) GetAllPossibleMoves() *list.List {
+	indexes := list.New()
+	if b.isWhiteOnMove {
+		indexes = b.GetWhiteIndexes()
+	} else {
+		indexes = b.GetBlackIndexes()
+	}
+	
+	result := list.New()
+	for currentPosition:= indexes.Front(); currentPosition != nil; currentPosition = currentPosition.Next() {
+		x := currentPosition.Value.(Tuple).item1
+		y := currentPosition.Value.(Tuple).item2
+		moves := b.GetCurrentPossibleMoves(x, y)
+		for temp := moves.Front(); temp != nil; temp = temp.Next() {
+			result.PushBack(temp.Value)
+		}
+	}
+	
+	return result
+}
+
+func (b *Board) GetChildBoards() *list.List {
+	result := list.New()
+	isGameFinished := b.IsFinished()
+	if (isGameFinished) {
+		return result
+	}
+	possibleMoves := b.GetAllPossibleMoves()
+	for possibleMove := possibleMoves.Front(); possibleMove != nil; possibleMove = possibleMove.Next() {
+		newBoard := b.Clone()
+		newBoard.PerformMove(possibleMove.Value.(Move))
+		newBoard.isWhiteOnMove = !b.isWhiteOnMove
+		result.PushBack(newBoard)
+	}
+
+	return result
+}
+
+func (b *Board) PerformMove(move Move) {
+	currentValue := b.Matrix[move.startX][move.startY]
+	b.Matrix[move.startX][move.startY] = Empty
+	if move.pawnReachedFinal {
+		var queen string
+		if b.isWhiteOnMove {
+			queen = "Q"
+		} else {
+			queen = "q"
+		}
+		
+		b.Matrix[move.endX][move.endY] = queen
+	} else {
+		b.Matrix[move.endX][move.endY] = currentValue
+	}
+
+	b.isWhiteOnMove = !b.isWhiteOnMove     
+}
+
+func (b *Board) PrintMatrix() {
+	 for i := 0; i<N; i++ {
+		 for j := 0; j<N; j++ {
+			 
+			 fmt.Print(b.GetPrintValue(b.Matrix[i][j]), " ")
+		 }
+		 fmt.Println();
+	 }
+
 }
