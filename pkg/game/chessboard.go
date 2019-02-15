@@ -993,10 +993,19 @@ func (b *Board) GetBlackPawnPossibleMoves(row int, column int) *list.List {
 
 func (b *Board) GetPawnPossibleMoves(row int, column int) *list.List {
 	pieceValue := b.Matrix[row][column]
-	if IsUpper(pieceValue) {
-		return b.GetWhitePawnPossibleMoves(row, column)
+	if b.areWeWithWhite {
+		if IsUpper(pieceValue) {
+			return b.GetWhitePawnPossibleMoves(row, column)
+		} else {
+			return b.GetBlackPawnPossibleMoves(row, column)
+		}	
 	} else {
-		return b.GetBlackPawnPossibleMoves(row, column)
+		if IsUpper(pieceValue) {
+			return b.GetBlackPawnPossibleMoves(row, column)
+		} else {
+			return b.GetWhitePawnPossibleMoves(row, column)
+		}
+	
 	}
 }
 
@@ -1065,9 +1074,9 @@ func (b *Board) GetCurrentPossibleMoves(x int, y int) *list.List {
 func (b *Board) GetAllPossibleMoves() *list.List {
 	indexes := list.New()
 	if b.isWhiteOnMove {
-		indexes = b.GetWhiteIndexes()
+			indexes = b.GetWhiteIndexes()
 	} else {
-		indexes = b.GetBlackIndexes()
+			indexes = b.GetBlackIndexes()
 	}
 
 	result := list.New()

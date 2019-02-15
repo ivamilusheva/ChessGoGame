@@ -20,7 +20,8 @@ import (
 
 func main() {
 	var board game.Board
-	board.New(true)
+	areWeWithWhite := false
+	board.New(areWeWithWhite)
 	board.PrintMatrix()
 	var currentNode game.Node
 	currentNode.New(board, 0)
@@ -28,7 +29,6 @@ func main() {
 	// Max recustion count: 4
 	var game game.Game
 	game.New(currentNode, 4)
-	game.PlayerPlay()
 	game.PlayGame()
 }
 
