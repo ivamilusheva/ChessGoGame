@@ -19,7 +19,7 @@ The game cannot be left as a console application because it will be really ugly 
 
 ### How to run the game
 
-1. go get github.com/ivamilusheva/ChessGoGame/pkg/game
+1. go get -v github.com/ivamilusheva/ChessGoGame/pkg/game
 
 2. import the package in your main package
 
