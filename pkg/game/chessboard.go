@@ -243,11 +243,11 @@ func (b *Board) GetBlackIndexes() *list.List {
 func (b *Board) AreDifferentColor(firstX, firstY, secondX, secondY int) bool {
 	firstValue := b.Matrix[firstX][firstY]
 	secondValue := b.Matrix[secondX][secondY]
-	if IsUpper(firstValue) && IsLower(secondValue) {
+	if IsUpper(firstValue) && IsLower(secondValue) && firstValue != Empty && secondValue != Empty {
 		return true
 	}
 
-	if IsLower(firstValue) && IsUpper(secondValue) {
+	if IsLower(firstValue) && IsUpper(secondValue) && firstValue != Empty && secondValue != Empty {
 		return true
 	}
 

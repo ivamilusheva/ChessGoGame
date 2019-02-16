@@ -146,4 +146,73 @@ func TestGetWhiteIndexes(t *testing.T){
 		t.Errorf("GetWhiteIndexes was incorrect, got: %v, want: %v.", total, list)
 	}
 }
+// GetBlackIndexes
 
+
+func TestGetBlackIndexes(t *testing.T){
+	var board game.Board
+	board.New(true)
+
+	total := board.GetBlackIndexes()
+	list := list.New()
+	var tup game.Tuple
+	tup.New(0,0)
+	list.PushBack(tup)
+	tup.New(0,1)
+	list.PushBack(tup)
+	tup.New(0,2)
+	list.PushBack(tup)
+	tup.New(0,3)
+	list.PushBack(tup)
+	tup.New(0,4)
+	list.PushBack(tup)
+	tup.New(0,5)
+	list.PushBack(tup)
+	tup.New(0,6)
+	list.PushBack(tup)
+	tup.New(0,7)
+	list.PushBack(tup)
+
+	tup.New(1,0)
+	list.PushBack(tup)
+	tup.New(1,1)
+	list.PushBack(tup)
+	tup.New(1,2)
+	list.PushBack(tup)
+	tup.New(1,3)
+	list.PushBack(tup)
+	tup.New(1,4)
+	list.PushBack(tup)
+	tup.New(1,5)
+	list.PushBack(tup)
+	tup.New(1,6)
+	list.PushBack(tup)
+	tup.New(1,7)
+	list.PushBack(tup)
+
+	if !reflect.DeepEqual(total, list) {
+		t.Errorf("GetBlackIndexes was incorrect, got: %v, want: %v.", total, list)
+	}
+}
+
+func TestAreDifferentColor (t *testing.T) {
+
+	var board game.Board
+	board.New(true)
+
+	total := board.AreDifferentColor(0 , 0, 7, 7)
+	if total != true {
+		t.Errorf("AreDifferentColor was incorrect, got: %v, want: %v.", total, true)
+	}
+
+	total = board.AreDifferentColor(0 , 0, 0, 7)
+	if total != false {
+		t.Errorf("AreDifferentColor was incorrect, got: %v, want: %v.", total, false)
+	}
+
+	total = board.AreDifferentColor(0 , 0, 4, 7)
+	if total != false {
+		t.Errorf("AreDifferentColor was incorrect, got: %v, want: %v.", total, false)
+	}
+	
+}
