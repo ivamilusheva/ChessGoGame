@@ -5,10 +5,6 @@ Implementation of the well-known chess game written on golang language. Universi
 
 Everybody knows what a base chess game is. If you are not sure, you can check [here](https://en.wikipedia.org/wiki/Chess).
 
-### Implementation with GUI
-
-The game cannot be left as a console application because it will be really ugly and hard to play. Here the Graphical User Interface is more than required.
-
 ### List of the extra functionalities
 
 1. Possibility of playing agains AI or another online connected player.
