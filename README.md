@@ -25,13 +25,12 @@ The game cannot be left as a console application because it will be really ugly 
 
 3. Initialize Board, Node and Game as configured below. The recursion level is being set in the Game constructor.
 
-var board game.Board
+	var board game.Board
 	areWeWithWhite := true
 	board.New(areWeWithWhite)
 	board.PrintMatrix()
 	var currentNode game.Node
 	currentNode.New(board, 0)
-
 	var game game.Game
 	game.New(currentNode, 4)
 	game.PlayGameWithAI()
