@@ -216,3 +216,60 @@ func TestAreDifferentColor (t *testing.T) {
 	}
 	
 }
+
+func TestDoesOpponentLineBeatField(t *testing.T) {
+	var board game.Board
+	board.New(true)
+
+	total := board.DoesOpponentLineBeatField(0, 0)
+	if total != false {
+		t.Errorf("DoesOpponentLineBeatField was incorrect, got: %v, want: %v.", total, false)
+	}
+
+	total = board.DoesOpponentLineBeatField(4, 7)
+	if total != false {
+		t.Errorf("DoesOpponentLineBeatField was incorrect, got: %v, want: %v.", total, false)
+	}
+
+} 
+
+// DoesOpponentDiagonalBeatField
+
+func TestDoesOpponentDiagonalBeatField(t *testing.T) {
+	var board game.Board
+	board.New(true)
+
+	total := board.DoesOpponentDiagonalBeatField(0, 0)
+	if total != false {
+		t.Errorf("DoesOpponentDiagonalBeatField was incorrect, got: %v, want: %v.", total, false)
+	}
+
+	total = board.DoesOpponentDiagonalBeatField(4, 7)
+	if total != false {
+		t.Errorf("DoesOpponentDiagonalBeatField was incorrect, got: %v, want: %v.", total, false)
+	}
+
+} 
+
+// DoesOpponentPawnBeatField
+
+func TestDoesOpponentPawnBeatField(t *testing.T) {
+	var board game.Board
+	board.New(true)
+
+	total := board.DoesOpponentPawnBeatField(0, 0)
+	if total != false {
+		t.Errorf("DoesOpponentPawnBeatField was incorrect, got: %v, want: %v.", total, false)
+	}
+
+	total = board.DoesOpponentPawnBeatField(2, 3)
+	if total != true {
+		t.Errorf("DoesOpponentPawnBeatField was incorrect, got: %v, want: %v.", total, true)
+	}
+
+	total = board.DoesOpponentPawnBeatField(4, 7)
+	if total != false {
+		t.Errorf("DoesOpponentPawnBeatField was incorrect, got: %v, want: %v.", total, false)
+	}
+
+} 
