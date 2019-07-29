@@ -15,9 +15,9 @@ Everybody knows what a base chess game is. If you are not sure, you can check [h
 
 ### How to run the game
 
-1. go get -v github.com/ivamilusheva/ChessGoGame/pkg/game
+1. Run go get -v github.com/ivamilusheva/ChessGoGame/pkg/game
 
-2. import the package in your main package
+2. Import the package in your main package
 
 3. Initialize Board, Node and Game as configured below. The recursion level is being set in the Game constructor.
 
